@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: yourapp
+  labels:
+    app: yourapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yourapp
+  template:
+    metadata:
+      name: yourapp
+      labels:
+        app: yourapp
+    spec:
+      containers:
+      - name: yourapp
+        image: <YOUR IMAGE NAME>
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          protocol: TCP
+#      if you need authentification docker registry, you will add image pull secrets.
+#      imagePullSecrets:
+#              - name: regsecret
